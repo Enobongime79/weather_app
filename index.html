@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/weather-app-main/assets/images/weather-forecast.png">
+    <link rel="stylesheet" href="output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Figtree:ital,wght@0,300..900;1,300..900&family=Gabarito:wght@400..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <title>Weather App</title>
+</head>
+<body style="background-color: #01012A;">
+    <div class="navbar flex flex-row justify-between items-center py-4 px-3 lg:px-28 lg:py-10">
+        <div><img class="h-7 md:h-9" src="/weather-app-main/assets/images/logo.svg" alt=""></div>
+        <div class="relative">
+           <div style="font-family: DM Sans; background-color: #242540;" class="flex flex-row gap-2 items-center px-4 py-2 rounded-lg">
+                <img class="h-4" src="weather-app-main/assets/images/icon-units.svg" alt="">
+                <p class="text-sm md:text-lg text-white font-normal">Units</p>
+                <img class="h-2 w-3" src="weather-app-main/assets/images/icon-dropdown.svg" alt="">
+           </div>
+           <div class="absolute">
+
+           </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col justify-center mt-10 lg:flex-row w-[87vw] mx-auto">
+        <h1 style="font-family: Bricolage Grotesque;" class="text-white text-center text-5xl px-7 lg:text-6xl font-bold">How's the sky looking today?</h1>
+    </div>
+
+    <div class="flex flex-col lg:flex-row items-center lg:mt-18 justify-center lg:gap-4 gap-3">
+        <div id="searchBar" contenteditable style="background-color: #242540; color: #B3B4C6" class="focus:outline-white lg:mt-0 lg:mx-0 mt-12 mx-7 rounded-lg h-14 flex flex-row items-center px-6 w-[90vw] lg:w-[45vw]">
+            <img src="/weather-app-main/assets/images/icon-search.svg" alt="">
+            <p style="font-family: DM Sans;" class="mx-5 text-xl">Search for a place...</p>
+        </div>
+        <div id="search" style="background-color: #4457DB;" class="lg:mt-0 lg:mx-0 focus:ring-2 focus:ring-blue-900 focus:ring-offset-2
+ mt-0 mx-7 rounded-lg lg:w-auto w-[90vw] h-14 flex flex-row justify-center items-center px-6">
+            <p style="font-family: DM Sans;" class="text-white text-xl">Search</p>
+        </div>
+    </div>
+
+
+<div class="lg:flex flex-row mx-auto lg:mt-0">
+    <div class=" mx-auto lg:mx-0 lg:w-[65%]">
+        <div class="lg:hidden  flex flex-row justify-center lg:mt-5 mt-8 mx-auto">
+            <img class=" w-[90%]" src="/weather-app-main/assets/images/bg-today-small.svg" alt="">
+        </div>
+
+        <div class="lg:flex hidden flex-row justify-center mt-8">
+            <img class=" w-[90%] bg-white/10 backdrop-blur-md border border-white/20 shadow-lg rounded-4xl text-white" src="/weather-app-main/assets/images/bg-today-large.svg" alt="">
+        </div>
+
+        <div class="my-6 w-[90%] mx-auto">
+            <div style="font-family: DM Sans;" class="justify-between text-white text-lg lg:grid-cols-4 grid grid-cols-2 gap-4 pt-4">
+                <div style="background-color: hsl(238, 28%, 20%);" class="h-40 lg:h-30 rounded-xl p-5 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg text-white">
+                    <h1>Feels Like</h1>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="h-40 lg:h-30 rounded-xl p-5 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg text-white">
+                    <h1>Humidity</h1>
+                </div>
+                 <div style="background-color: hsl(238, 28%, 20%);" class="h-40 lg:h-30 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 text-white">
+                    <h1>Wind</h1>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="h-40 lg:h-30 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 text-white ">
+                    <h1>Precipitation</h1>
+                </div>
+            </div>
+
+        </div>
+        <div style="font-family: DM Sans; color:white" class="w-[90%] mx-auto">
+            <h1 class="font-semibold text-lg">Daily forecast</h1>
+            <div class="grid grid-cols-3 lg:grid-cols-7 gap-4 pt-4">
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Mon</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Tue</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Wed</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Thu</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Fri</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Sat</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+                <div style="background-color: hsl(238, 28%, 20%);" class="rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white lg:h-35 h-40 py-3">
+                    <p class="text-center">Sun</p>
+                    <img src="" alt="">
+                    <div>
+                        <p></p>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: hsl(238, 28%, 20%);" class="text-white my-5 lg:w-[30%] w-[90%] h-auto rounded-xl py-2 pb-5 px-4 lg:mx-0 lg:mt-5 mx-auto">
+        <div class="my-6"> <p class="font-bold text-lg">Hourly forecast</p></div>
+        <div class="flex flex-col gap-4">
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p></p>
+                <p></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
