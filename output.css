@@ -396,6 +396,12 @@
   .w-\[12vw\] {
     width: 12vw;
   }
+  .w-\[30vw\] {
+    width: 30vw;
+  }
+  .w-\[40vw\] {
+    width: 40vw;
+  }
   .w-\[50\%\] {
     width: 50%;
   }
@@ -407,6 +413,9 @@
   }
   .w-\[60vw\] {
     width: 60vw;
+  }
+  .w-\[70vw\] {
+    width: 70vw;
   }
   .w-\[87vw\] {
     width: 87vw;

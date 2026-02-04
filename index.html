@@ -162,11 +162,11 @@
             <p class="font-semibold text-lg">Hourly forecast</p>
              <div class="relative">
                 <div id="days" style="font-family: DM Sans;" class="bg-[#3C3B5A] flex flex-row gap-2 items-center px-4 py-1 rounded-lg">
-                        <p class="text-md md:text-lg text-white font-normal">-</p>
+                        <p id="theDay" class="text-md md:text-lg text-white font-normal">-</p>
                         <img class="h-2 w-3" src="weather-app-main/assets/images/icon-dropdown.svg" alt="">
                 </div>
-                <div id="dayDropdown" style="font-family: DM Sans;" class="hidden backdrop-blur-md border border-white/20 shadow-lg text-md z-50 bg-[#242540] mt-1 justify-end right-1 w-[300%] rounded-lg px-2 absolute lg:w-[15vw] text-white">
-                        <div id="monday" class="py-2 my-2 flex flex-row justify-between text-sm px-2 rounded-lg bg-[#2F2F48]" ><p>Monday</p></div>
+                <div id="dayDropdown" style="font-family: DM Sans;" class="hidden backdrop-blur-md border border-white/20 shadow-lg text-md z-50 bg-[#242540] mt-1 justify-end right-1 w-[40vw] rounded-lg px-2 absolute lg:w-[15vw] text-white">
+                        <div id="monday" class="py-2 my-2 flex flex-row justify-between text-sm px-2 rounded-lg" ><p>Monday</p></div>
                         <div id="tuesday" class="py-2 my-1 flex flex-row justify-between text-sm px-2 rounded-lg "><p>Tuesday</p></div>
                         <div id="wednesday" class="py-2 my-1 flex flex-row justify-between text-sm px-2 rounded-lg " ><p>Wednesday</p></div>
                         <div id="thursday" class="py-2 my-1 flex flex-row justify-between text-sm px-2 rounded-lg " ><p>Thursday</p></div>
@@ -221,10 +221,7 @@
     </div>
 </div>
 
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

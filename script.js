@@ -1,21 +1,45 @@
-// const axios = require('axios');
-
-async function getWeatherDetails(){
+async function getCoordinates(){
     try {
-        const response = await axios.get();
+        const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${searchBar.value}&count=10&language=en&format=json`);
 
         if (!response){
             throw new Error (`Network response was not ok: ${response.status}`);
         }
 
-        const data = response.json();
+        const data = response.data;
+
+        if ("results" in data){        
+            
+            console.log("new shipment");
+            console.log(data);
+
+            for (let i = 0; i < 3; i++){
+                console.log(data.results[i].name);
+                console.log(data.results[i].country)
+                const latitude = data.results[i].latitude;
+                const longitude = data.results[i].longitude;
+                console.log(`The latitude is ${latitude} and the longitude is ${longitude}`)
+                currentStates.push(data.results[i].country);
+            }
+               // console.log(data.results[i].name);
+                // console.log(data.results[i].country);
+            console.log(currentStates);
+
+        }
+
     }
     catch (error){
         console.error("There has been a problem with your fetch operation: ", error);
     }
 }
-
+let currentStates = [];
 const searchBar = document.getElementById("searchBar");
+
+searchBar.addEventListener("input", () => {
+    currentStates = []
+    getCoordinates();
+})
+
 const searchBarDiv = document.getElementById("searchBarDiv");
 
 const units = document.getElementById("units");
@@ -26,13 +50,11 @@ units.addEventListener("click", () => {
     if (dropDownState == false) {
         unitDropdown.classList.remove("hidden");
         dropDownState = true;
-        console.log("working");
     }
 
     else if (dropDownState == true) {
         unitDropdown.classList.add("hidden");
         dropDownState = false;
-        console.log("not working");
     }
 })
 
@@ -45,13 +67,11 @@ days.addEventListener("click", () => {
     if (dayDropDownState == false) {
         dayDropdown.classList.remove("hidden");
         dayDropDownState = true;
-        console.log("working");
     }
 
     else if (dayDropDownState == true) {
         dayDropdown.classList.add("hidden");
         dayDropDownState = false;
-        console.log("not working");
     }
 })
 
@@ -124,6 +144,8 @@ const friday = document.getElementById("friday");
 const saturday = document.getElementById("saturday");
 const sunday = document.getElementById("sunday");
 
+const theDay = document.getElementById("theDay");
+
 monday.addEventListener("click", () => {
     monday.classList.add("bg-[#2F2F48]");
     tuesday.classList.remove("bg-[#2F2F48]");
@@ -132,6 +154,9 @@ monday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Monday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 tuesday.addEventListener("click", () => {
@@ -142,6 +167,9 @@ tuesday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Tuesday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 wednesday.addEventListener("click", () => {
@@ -152,6 +180,9 @@ wednesday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Wednesday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 thursday.addEventListener("click", () => {
@@ -162,6 +193,9 @@ thursday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Thurday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 friday.addEventListener("click", () => {
@@ -172,6 +206,9 @@ friday.addEventListener("click", () => {
     friday.classList.add("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Friday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 saturday.addEventListener("click", () => {
@@ -182,6 +219,9 @@ saturday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.add("bg-[#2F2F48]");
     sunday.classList.remove("bg-[#2F2F48]");
+    theDay.innerText = `Saturday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
 
 sunday.addEventListener("click", () => {
@@ -192,4 +232,7 @@ sunday.addEventListener("click", () => {
     friday.classList.remove("bg-[#2F2F48]");
     saturday.classList.remove("bg-[#2F2F48]");
     sunday.classList.add("bg-[#2F2F48]");
+    theDay.innerText = `Sunday`;
+    theDay.classList.add("text-sm");
+    theDay.classList.remove("text-md")
 })
