@@ -12,6 +12,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
     <title>Weather App</title>
+    <style>
+                /* Chrome, Edge, Safari */
+        ::-webkit-scrollbar {
+        width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+        background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+        background-color: #3C3B5A;
+        border-radius: 9999px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+        background-color: #5B5A8C;
+        }
+    </style>
 </head>
 <body style="background-color: #01012A;">
     <div class="navbar flex flex-row justify-between items-center py-4 px-3 lg:px-28 lg:py-10">
@@ -81,19 +102,19 @@
             <div style="font-family: DM Sans;" class="justify-between text-white text-lg lg:grid-cols-4 grid grid-cols-2 gap-4 pt-4">
                 <div style="background-color: hsl(238, 28%, 20%);" class="flex flex-col justify-between h-40 lg:h-30 rounded-xl p-5 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg text-white">
                     <h1>Feels Like</h1>
-                    <p class="text-3xl">-</p>
+                    <p class="text-3xl"><span id="feelsLike" >-</span>&nbsp;<span id="tempSymbol" class="hidden">C&deg;</span></p>
                 </div>
                 <div style="background-color: hsl(238, 28%, 20%);" class="flex flex-col justify-between h-40 lg:h-30 rounded-xl p-5 bg-white/10 backdrop-blur-md border border-white/20 shadow-lg text-white">
                     <h1>Humidity</h1>
-                    <p class="text-3xl">-</p>
+                    <p class="text-3xl"><span id="humidity" >-</span><span id="humidSymbol" class="hidden">%</span></p>
                 </div>
                  <div style="background-color: hsl(238, 28%, 20%);" class="flex flex-col justify-between h-40 lg:h-30 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 text-white">
                     <h1>Wind</h1>
-                    <p class="text-3xl">-</p>
+                    <p class="text-3xl"><span id="wind" >-</span>&nbsp;<span id="windSymbol" class="hidden text-2xl">km/h</span></p>
                 </div>
                 <div style="background-color: hsl(238, 28%, 20%);" class="flex flex-col justify-between h-40 lg:h-30 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 text-white ">
                     <h1>Precipitation</h1>
-                    <p class="text-3xl">-</p>
+                    <p class="text-3xl"><span id="precipitation" >-</span>&nbsp;<span id="rainSymbol" class="hidden">mm</span></p>
                 </div>
             </div>
 
@@ -161,8 +182,8 @@
         </div>
     </div>
 
-    <div style="background-color: hsl(238, 28%, 20%); font-family: DM Sans;" class="text-white my-5 lg:w-[28%] w-[90%] h-auto rounded-3xl py-2 pb-5 lg:px-6 px-4 lg:mx-0 lg:mt-0 mx-auto">
-        <div class="my-4 flex justify-between items-center"> 
+    <div style="background-color: hsl(238, 28%, 20%); font-family: DM Sans;" class="text-white my-5 lg:w-[28%] w-[90%]  rounded-2xl py-2 pb-5 lg:px-6 px-4 lg:mx-0 lg:mt-0 mx-auto overflow-y-auto h-163">
+        <div class="my-4 flex justify-between items-center overflow-hidden"> 
             <p class="font-semibold text-lg">Hourly forecast</p>
              <div class="relative">
                 <div id="days" style="font-family: DM Sans;" class="bg-[#3C3B5A] flex flex-row gap-2 items-center px-4 py-1 rounded-lg">
@@ -181,45 +202,125 @@
             </div>
         </div>
         <div class="flex flex-col gap-4">
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>1 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="oneAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>2 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="twoAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>3 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="threeAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>4 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="fourAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>5 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="fiveAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>6 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="sixAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>7 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="sevenAmTemp"></span>&deg;</p>
             </div>
-            <div style="background-color: #2F2F48" class="h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
                 <img src="" alt="">
-                <p></p>
-                <p></p>
+                <p>8 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="eightAmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>9 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="nineAmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>10 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="tenAmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>11 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="elevenAmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>12 AM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="twelveAmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>1 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="onePmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>2 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="twoPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>3 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="threePmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>4 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="fourPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>5 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="fivePmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>6 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="sixPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>7 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="sevenPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>8 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="eightPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>9 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="ninePmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>10 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="tenPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>11 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="elevenPmTemp"></span>&deg;</p>
+            </div>
+            <div style="background-color: #2F2F48" class="flex flex-row items-center h-[6vh] lg:h-14 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-6 text-white">
+                <img src="" alt="">
+                <p>12 PM</p>
+                <p class="hourTemp ms-auto hidden text-sm"><span id="twelvePmTemp"></span>&deg;</p>
             </div>
         </div>
     </div>
