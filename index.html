@@ -45,17 +45,21 @@
     </div>
 
     <div class="flex flex-col lg:flex-row items-center lg:mt-18 lg:mb-10 justify-center lg:gap-4 gap-3">
-        <div id="searchBarDiv" class="bg-[#242540]  focus-within:outline-2 focus-within:outline-white
- text-[#B3B4C6] lg:mt-0 mt-12 lg:mx-0 mx-7 rounded-xl h-14 flex items-center px-6 w-[90vw] lg:w-[40vw]">
+
+        <div class="relative">
+            <div id="searchBarDiv" class="bg-[#242540]  focus-within:outline-2 focus-within:outline-white text-[#B3B4C6] lg:mt-0 mt-12 lg:mx-0 rounded-xl h-14 flex items-center px-6 w-[90vw] lg:w-[40vw]">
             <img src="/weather-app-main/assets/images/icon-search.svg" alt="" class="mr-5">
-            <input
-                id="searchBar"
-                style="font-family: DM Sans;"
-                type="text"
-                placeholder="Search for a place..."
-                class="bg-transparent text-white outline-none text-xl w-full font-[DM Sans]"
-            />
+            <input id="searchBar" style="font-family: DM Sans;" type="text" placeholder="Search for a place..." class="bg-transparent text-white outline-none text-xl w-full font-[DM Sans]"/>
         </div>
+        <div style="font-family: DM Sans" class="hidden absolute top-27 lg:top-15 bg-[#242540] w-[90vw] my-1 rounded-xl flex-col flex gap-3 text-sm lg:w-[40vw] z-50 text-white py-2 px-2">
+            <p class="rounded-lg hover:bg-[#2F2F48] py-3 px-2">City Name</p>
+            <p class="rounded-lg hover:bg-[#2F2F48] py-3 px-2">City Name</p>
+            <p class="rounded-lg hover:bg-[#2F2F48] py-3 px-2">City Name</p>
+            <p class="rounded-lg hover:bg-[#2F2F48] py-3 px-2">City Name</p>
+        </div>
+        </div>
+        
+
         <div id="search" class="bg-[#4457DB] lg:mt-0 lg:mx-0 mt-0 mx-7 active:outline-2 outline-indigo-900 hover:bg-indigo-900 rounded-xl lg:w-auto w-[90vw] h-14 flex flex-row justify-center items-center px-6">
             <p style="font-family: DM Sans;" class="text-white text-xl">Search</p>
         </div>
