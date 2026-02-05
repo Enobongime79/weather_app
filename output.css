@@ -211,11 +211,17 @@
   .static {
     position: static;
   }
+  .top-1 {
+    top: calc(var(--spacing) * 1);
+  }
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
   .top-10 {
     top: calc(var(--spacing) * 10);
+  }
+  .top-11 {
+    top: calc(var(--spacing) * 11);
   }
   .top-27 {
     top: calc(var(--spacing) * 27);
@@ -225,6 +231,18 @@
   }
   .top-100 {
     top: calc(var(--spacing) * 100);
+  }
+  .top-110 {
+    top: calc(var(--spacing) * 110);
+  }
+  .top-115 {
+    top: calc(var(--spacing) * 115);
+  }
+  .top-116 {
+    top: calc(var(--spacing) * 116);
+  }
+  .top-118 {
+    top: calc(var(--spacing) * 118);
   }
   .top-122 {
     top: calc(var(--spacing) * 122);
@@ -240,6 +258,9 @@
   }
   .top-127 {
     top: calc(var(--spacing) * 127);
+  }
+  .top-128 {
+    top: calc(var(--spacing) * 128);
   }
   .top-130 {
     top: calc(var(--spacing) * 130);
@@ -340,6 +361,9 @@
   .h-28 {
     height: calc(var(--spacing) * 28);
   }
+  .h-35 {
+    height: calc(var(--spacing) * 35);
+  }
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
@@ -391,6 +415,9 @@
   .h-\[38vh\] {
     height: 38vh;
   }
+  .h-\[40vh\] {
+    height: 40vh;
+  }
   .h-\[vh\] {
     height: vh;
   }
@@ -402,6 +429,12 @@
   }
   .w-\[40vw\] {
     width: 40vw;
+  }
+  .w-\[80v\] {
+    width: 80v;
+  }
+  .w-\[80vw\] {
+    width: 80vw;
   }
   .w-\[87vw\] {
     width: 87vw;
@@ -438,6 +471,9 @@
   }
   .items-center {
     align-items: center;
+  }
+  .justify-around {
+    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
@@ -562,6 +598,9 @@
   }
   .py-10 {
     padding-block: calc(var(--spacing) * 10);
+  }
+  .py-12 {
+    padding-block: calc(var(--spacing) * 12);
   }
   .py-20 {
     padding-block: calc(var(--spacing) * 20);

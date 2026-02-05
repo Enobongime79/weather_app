@@ -77,11 +77,14 @@ searchBar.addEventListener("input", () => {
 
 })
 
+let placeClicked = "";
+
 firstSug.addEventListener("click", () => {
     searchBar.value = firstSug.innerText;
     suggestions.classList.add("hidden");
     currentLatitude = latitudes[0];
     currentLongitude = longitudes[0];
+    placeClicked = firstSug.innerText;
     console.log(`The longitude is ${currentLongitude} and the latitude is ${currentLatitude}`)
 })
 
@@ -90,6 +93,7 @@ secondSug.addEventListener("click", () => {
     suggestions.classList.add("hidden");
     currentLatitude = latitudes[1];
     currentLongitude = longitudes[1];
+    placeClicked = secondSug.innerText;
     console.log(`The longitude is ${currentLongitude} and the latitude is ${currentLatitude}`)
 })
 
@@ -98,6 +102,7 @@ thirdSug.addEventListener("click", () => {
     suggestions.classList.add("hidden");
     currentLatitude = latitudes[2];
     currentLongitude = longitudes[2];
+    placeClicked = thirdSug.innerText;
     console.log(`The longitude is ${currentLongitude} and the latitude is ${currentLatitude}`)
 })
 
@@ -106,6 +111,7 @@ fourthSug.addEventListener("click", () => {
     suggestions.classList.add("hidden");
     currentLatitude =  latitudes[3];
     currentLongitude = longitudes[3];
+    placeClicked = fourthSug.innerText;
     console.log(`The longitude is ${currentLongitude} and the latitude is ${currentLatitude}`)
 })
 
@@ -186,6 +192,14 @@ const dayFiveWeather = document.getElementById("dayFiveWeather");
 const daySixWeather = document.getElementById("daySixWeather");
 const daySevenWeather = document.getElementById("daySevenWeather");
 
+const myDate = document.getElementById("myDate");
+
+const place = document.getElementById("place");
+
+const currentTemps = document.getElementById("currentTemps");
+
+const weatherImage = document.getElementById("weatherImage");
+
 async function getWeatherDetails(){
     try {
         const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${currentLatitude}&longitude=${currentLongitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=,weather_code,temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&timezone=auto`);
@@ -199,9 +213,11 @@ async function getWeatherDetails(){
         const currentPrecipitation = data.current.precipitation;
         const currentWeather = data.current.weather_code;
 
+        currentTemps.innerHTML = `${currentTemp} &deg;`
         
         let rawDate = [];
 
+        place.innerText = placeClicked;
 
         let hourlyTemp = []
 
@@ -260,10 +276,12 @@ async function getWeatherDetails(){
             return "unknown";
         }
 
+        
+
         for (let i = 0; i < dailyWeather.length; i++){
             weatherName.push(mapWeather(dailyWeather[i]))
         }
-
+        
         const dailyWeatherImages = [dayOneWeather, dayTwoWeather, dayThreeWeather, dayFourWeather, dayFiveWeather, daySixWeather, daySevenWeather];
 
         for (let i = 0; i < dailyWeatherImages.length; i++){
@@ -297,11 +315,19 @@ async function getWeatherDetails(){
             }             
         }
 
+        weatherImage.src = dailyWeatherImages[0].src;
+
         let dateName = [];
 
         for (let i = 0; i < rawDate.length; i++){
             dateName.push(rawDate[i].slice(0, 3))
         }
+
+        const now = new Date();
+
+        const formatted = new Intl.DateTimeFormat("en-US", {weekday: "long", month: "short", day: "numeric", year: "numeric"}).format(now);
+
+        myDate.innerText = formatted;
 
         dayOne.innerText = dateName[0];
         dayTwo.innerText = dateName[1];
