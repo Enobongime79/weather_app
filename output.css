@@ -7,17 +7,12 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-blue-900: oklch(37.9% 0.146 265.522);
-    --color-indigo-600: oklch(51.1% 0.262 276.966);
     --color-indigo-900: oklch(35.9% 0.144 278.697);
-    --color-purple-600: oklch(55.8% 0.288 302.321);
-    --color-purple-700: oklch(49.6% 0.265 301.924);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-300: oklch(87.2% 0.01 258.338);
     --color-gray-400: oklch(70.7% 0.022 261.325);
-    --color-gray-500: oklch(55.1% 0.027 264.364);
     --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
-    --color-gray-800: oklch(27.8% 0.033 256.848);
-    --color-gray-900: oklch(21% 0.034 264.665);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -33,10 +28,18 @@
     --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
     --text-3xl--line-height: calc(2.25 / 1.875);
+    --text-4xl: 2.25rem;
+    --text-4xl--line-height: calc(2.5 / 2.25);
     --text-5xl: 3rem;
     --text-5xl--line-height: 1;
     --text-6xl: 3.75rem;
     --text-6xl--line-height: 1;
+    --text-7xl: 4.5rem;
+    --text-7xl--line-height: 1;
+    --text-8xl: 6rem;
+    --text-8xl--line-height: 1;
+    --text-9xl: 8rem;
+    --text-9xl--line-height: 1;
     --font-weight-normal: 400;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -208,32 +211,44 @@
   .static {
     position: static;
   }
+  .top-4 {
+    top: calc(var(--spacing) * 4);
+  }
+  .top-10 {
+    top: calc(var(--spacing) * 10);
+  }
   .top-27 {
     top: calc(var(--spacing) * 27);
+  }
+  .top-70 {
+    top: calc(var(--spacing) * 70);
+  }
+  .top-100 {
+    top: calc(var(--spacing) * 100);
+  }
+  .top-122 {
+    top: calc(var(--spacing) * 122);
+  }
+  .top-123 {
+    top: calc(var(--spacing) * 123);
+  }
+  .top-124 {
+    top: calc(var(--spacing) * 124);
+  }
+  .top-125 {
+    top: calc(var(--spacing) * 125);
+  }
+  .top-127 {
+    top: calc(var(--spacing) * 127);
+  }
+  .top-130 {
+    top: calc(var(--spacing) * 130);
   }
   .right-1 {
     right: calc(var(--spacing) * 1);
   }
   .z-50 {
     z-index: 50;
-  }
-  .container {
-    width: 100%;
-    @media (width >= 40rem) {
-      max-width: 40rem;
-    }
-    @media (width >= 48rem) {
-      max-width: 48rem;
-    }
-    @media (width >= 64rem) {
-      max-width: 64rem;
-    }
-    @media (width >= 80rem) {
-      max-width: 80rem;
-    }
-    @media (width >= 96rem) {
-      max-width: 96rem;
-    }
   }
   .mx-7 {
     margin-inline: calc(var(--spacing) * 7);
@@ -255,6 +270,9 @@
   }
   .my-6 {
     margin-block: calc(var(--spacing) * 6);
+  }
+  .my-20 {
+    margin-block: calc(var(--spacing) * 20);
   }
   .ms-auto {
     margin-inline-start: auto;
@@ -295,9 +313,6 @@
   .table {
     display: table;
   }
-  .h-1 {
-    height: calc(var(--spacing) * 1);
-  }
   .h-2 {
     height: calc(var(--spacing) * 2);
   }
@@ -307,38 +322,71 @@
   .h-7 {
     height: calc(var(--spacing) * 7);
   }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
   .h-14 {
     height: calc(var(--spacing) * 14);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+  .h-28 {
+    height: calc(var(--spacing) * 28);
   }
   .h-40 {
     height: calc(var(--spacing) * 40);
   }
-  .h-125 {
-    height: calc(var(--spacing) * 125);
+  .h-45 {
+    height: calc(var(--spacing) * 45);
   }
-  .h-150 {
-    height: calc(var(--spacing) * 150);
+  .h-50 {
+    height: calc(var(--spacing) * 50);
   }
-  .h-160 {
-    height: calc(var(--spacing) * 160);
-  }
-  .h-162 {
-    height: calc(var(--spacing) * 162);
+  .h-70 {
+    height: calc(var(--spacing) * 70);
   }
   .h-163 {
     height: calc(var(--spacing) * 163);
   }
-  .h-180 {
-    height: calc(var(--spacing) * 180);
+  .h-\[2vh\] {
+    height: 2vh;
   }
-  .h-200 {
-    height: calc(var(--spacing) * 200);
-  }
-  .h-600 {
-    height: calc(var(--spacing) * 600);
+  .h-\[3vh\] {
+    height: 3vh;
   }
   .h-\[6vh\] {
     height: 6vh;
+  }
+  .h-\[20vh\] {
+    height: 20vh;
+  }
+  .h-\[23vh\] {
+    height: 23vh;
+  }
+  .h-\[25vh\] {
+    height: 25vh;
+  }
+  .h-\[28vh\] {
+    height: 28vh;
+  }
+  .h-\[29vh\] {
+    height: 29vh;
+  }
+  .h-\[30vh\] {
+    height: 30vh;
+  }
+  .h-\[32vh\] {
+    height: 32vh;
+  }
+  .h-\[35vh\] {
+    height: 35vh;
+  }
+  .h-\[38vh\] {
+    height: 38vh;
+  }
+  .h-\[vh\] {
+    height: vh;
   }
   .w-3 {
     width: calc(var(--spacing) * 3);
@@ -402,6 +450,15 @@
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
+  }
+  .gap-10 {
+    gap: calc(var(--spacing) * 10);
+  }
+  .gap-14 {
+    gap: calc(var(--spacing) * 14);
+  }
+  .gap-18 {
+    gap: calc(var(--spacing) * 18);
   }
   .overflow-hidden {
     overflow: hidden;
@@ -497,6 +554,12 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
+  .py-10 {
+    padding-block: calc(var(--spacing) * 10);
+  }
+  .py-20 {
+    padding-block: calc(var(--spacing) * 20);
+  }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
@@ -514,9 +577,25 @@
     font-size: var(--text-3xl);
     line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
+  .text-4xl {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+  }
   .text-5xl {
     font-size: var(--text-5xl);
     line-height: var(--tw-leading, var(--text-5xl--line-height));
+  }
+  .text-6xl {
+    font-size: var(--text-6xl);
+    line-height: var(--tw-leading, var(--text-6xl--line-height));
+  }
+  .text-7xl {
+    font-size: var(--text-7xl);
+    line-height: var(--tw-leading, var(--text-7xl--line-height));
+  }
+  .text-8xl {
+    font-size: var(--text-8xl);
+    line-height: var(--tw-leading, var(--text-8xl--line-height));
   }
   .text-lg {
     font-size: var(--text-lg);
@@ -549,6 +628,9 @@
   .text-\[\#B3B4C6\] {
     color: #B3B4C6;
   }
+  .text-gray-300 {
+    color: var(--color-gray-300);
+  }
   .text-gray-400 {
     color: var(--color-gray-400);
   }
@@ -557,6 +639,9 @@
   }
   .text-white {
     color: var(--color-white);
+  }
+  .italic {
+    font-style: italic;
   }
   .underline {
     text-decoration-line: underline;
@@ -759,12 +844,6 @@
     @media (width >= 64rem) {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
-    }
-  }
-  .lg\:text-xs {
-    @media (width >= 64rem) {
-      font-size: var(--text-xs);
-      line-height: var(--tw-leading, var(--text-xs--line-height));
     }
   }
 }
