@@ -200,6 +200,8 @@ const currentTemps = document.getElementById("currentTemps");
 
 const weatherImage = document.getElementById("weatherImage");
 
+const smallCard = document.getElementById("smallCard");
+
 async function getWeatherDetails(){
     try {
         const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${currentLatitude}&longitude=${currentLongitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=,weather_code,temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&timezone=auto`);
@@ -370,6 +372,8 @@ async function getWeatherDetails(){
         tenPmTemp.innerText = hourlyTemp[22];
         elevenPmTemp.innerText = hourlyTemp[23];
         twelvePmTemp.innerText = hourlyTemp[24];
+
+        smallCard.classList.remove("hidden");
 
         console.log(data.hourly.temperature_2m[2]);
 
