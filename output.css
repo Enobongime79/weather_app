@@ -247,6 +247,9 @@
   .right-1 {
     right: calc(var(--spacing) * 1);
   }
+  .z-30 {
+    z-index: 30;
+  }
   .z-50 {
     z-index: 50;
   }
