@@ -178,6 +178,14 @@ const daySevenMin = document.getElementById("daySevenMin");
 
 const tempSymbols = document.querySelectorAll(".tempSymbols");
 
+const dayOneWeather = document.getElementById("dayOneWeather");
+const dayTwoWeather = document.getElementById("dayTwoWeather");
+const dayThreeWeather = document.getElementById("dayThreeWeather");
+const dayFourWeather = document.getElementById("dayFourWeather");
+const dayFiveWeather = document.getElementById("dayFiveWeather");
+const daySixWeather = document.getElementById("daySixWeather");
+const daySevenWeather = document.getElementById("daySevenWeather");
+
 async function getWeatherDetails(){
     try {
         const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${currentLatitude}&longitude=${currentLongitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=,weather_code,temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&timezone=auto`);
@@ -231,6 +239,63 @@ async function getWeatherDetails(){
         }
         
         console.log(rawDate);
+
+        const dailyWeather = data.daily.weather_code;
+        let weatherName = [];
+        
+        function mapWeather(code) {
+            if (code === 0) return "sunny";
+
+            if ([1, 2].includes(code)) return "partly-cloudy";
+
+            if (code === 3) return "overcast";
+
+            if ([45, 48].includes(code)) return "fog";
+
+            if (
+                [51, 53, 55, 61, 63, 65, 80, 81, 82].includes(code)
+            ) return "rain";
+
+            if (
+                [56, 57, 66, 67, 71, 73, 75, 77, 85, 86].includes(code)
+            ) return "snow";
+
+            if ([95, 96, 99].includes(code)) return "storm";
+
+            return "unknown";
+        }
+
+        for (let i = 0; i < dailyWeather.length; i++){
+            weatherName.push(mapWeather(dailyWeather[i]))
+        }
+
+        console.log(weatherName);
+
+        const dailyWeatherImages = [dayOneWeather, dayTwoWeather, dayThreeWeather, dayFourWeather, dayFiveWeather, daySixWeather, daySevenWeather];
+
+        for (let i = 0; i < dailyWeatherImages.length; i++){
+            if (weatherName[i] == "sunny"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-sunny.webp";
+            }
+            if (weatherName[i] == "partly-cloudy"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-partly-cloudy.webp";
+            }
+            if (weatherName[i] == "overcast"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-overcast.webp";
+            }
+            if (weatherName[i] == "fog"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-fog.webp";
+            }
+            if (weatherName[i] == "rain"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-rain.webp";
+            }
+            if (weatherName[i] == "snow"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-snow.webp";
+            }
+            if (weatherName[i] == "storm"){
+                dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-storm.webp";
+            }             
+        }
 
         let dateName = [];
 
