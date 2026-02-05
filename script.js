@@ -147,6 +147,37 @@ const tenPmTemp = document.getElementById("tenPmTemp");
 const elevenPmTemp = document.getElementById("elevenPmTemp");
 const twelvePmTemp = document.getElementById("twelvePmTemp");
 
+const dayOne = document.getElementById("dayOne");
+const dayTwo = document.getElementById("dayTwo");
+const dayThree = document.getElementById("dayThree");
+const dayFour = document.getElementById("dayFour");
+const dayFive = document.getElementById("dayFive");
+const daySix = document.getElementById("daySix");
+const daySeven = document.getElementById("daySeven");
+
+const dayOneMax = document.getElementById("dayOneMax");
+const dayOneMin = document.getElementById("dayOneMin");
+
+const dayTwoMax = document.getElementById("dayTwoMax");
+const dayTwoMin = document.getElementById("dayTwoMin");
+
+const dayFourMax = document.getElementById("dayFourMax");
+const dayFourMin = document.getElementById("dayFourMin");
+
+const dayFiveMax = document.getElementById("dayFiveMax");
+const dayFiveMin = document.getElementById("dayFiveMin");
+
+const daySixMax = document.getElementById("daySixMax");
+const daySixMin = document.getElementById("daySixMin");
+
+const dayThreeMax = document.getElementById("dayThreeMax");
+const dayThreeMin = document.getElementById("dayThreeMin");
+
+const daySevenMax = document.getElementById("daySevenMax");
+const daySevenMin = document.getElementById("daySevenMin");
+
+const tempSymbols = document.querySelectorAll(".tempSymbols");
+
 async function getWeatherDetails(){
     try {
         const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${currentLatitude}&longitude=${currentLongitude}&daily=temperature_2m_max,temperature_2m_min,weather_code&hourly=,weather_code,temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&timezone=auto`);
@@ -160,16 +191,69 @@ async function getWeatherDetails(){
         const currentPrecipitation = data.current.precipitation;
         const currentWeather = data.current.weather_code;
 
+        
+        let rawDate = [];
+
+
         let hourlyTemp = []
 
-        for (let i = 1; i < 25; i++){
+        for (let i = 1; i < 26; i++){
             hourlyTemp.push(data.hourly.temperature_2m[i]);
         }
 
+        let maxTemps = data.daily.temperature_2m_max;
+        let minTemps = data.daily.temperature_2m_min;
+
+        console.log(maxTemps);
+        console.log(minTemps);
+
+        dayOneMax.innerHTML = `${maxTemps[0]} &deg;`;
+        dayTwoMax.innerHTML = `${maxTemps[1]} &deg;`;
+        dayThreeMax.innerHTML = `${maxTemps[2]} &deg;`;
+        dayFourMax.innerHTML = `${maxTemps[3]} &deg;`;
+        dayFiveMax.innerHTML = `${maxTemps[4]} &deg;`;
+        daySixMax.innerHTML = `${maxTemps[5]} &deg;`;
+        daySevenMax.innerHTML = `${maxTemps[6]} &deg;`;
+
+        dayOneMin.innerHTML = `${minTemps[0]} &deg;`;
+        dayTwoMin.innerHTML = `${minTemps[1]} &deg;`;
+        dayThreeMin.innerHTML = `${minTemps[2]} &deg;`;
+        dayFourMin.innerHTML = `${minTemps[3]} &deg;`;
+        dayFiveMin.innerHTML = `${minTemps[4]} &deg;`;
+        daySixMin.innerHTML = `${minTemps[5]} &deg;`;
+        daySevenMin.innerHTML = `${minTemps[6]} &deg;`;
+
+
+        for (let i = 0; i < data.daily.time.length; i++){
+            let date = new Date(data.daily.time[i]);
+            let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
+            rawDate.push(dayName);
+        }
         
+        console.log(rawDate);
+
+        let dateName = [];
+
+        for (let i = 0; i < rawDate.length; i++){
+            dateName.push(rawDate[i].slice(0, 3))
+        }
+
+        dayOne.innerText = dateName[0];
+        dayTwo.innerText = dateName[1];
+        dayThree.innerText = dateName[2];
+        dayFour.innerText = dateName[3];
+        dayFive.innerText = dateName[4];
+        daySix.innerText = dateName[5];
+        daySeven.innerText = dateName[6];
+
+        console.log(dateName)
+
+
         hourTemp.forEach(el => {
         el.classList.remove('hidden');
         });
+
+
 
         oneAmTemp.innerText = hourlyTemp[1];
         twoAmTemp.innerText = hourlyTemp[2];
