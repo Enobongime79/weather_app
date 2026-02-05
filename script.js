@@ -434,11 +434,13 @@ days.addEventListener("click", () => {
     if (dayDropDownState == false) {
         dayDropdown.classList.remove("hidden");
         dayDropDownState = true;
+        console.log("hello");
     }
 
     else if (dayDropDownState == true) {
         dayDropdown.classList.add("hidden");
         dayDropDownState = false;
+        console.log("hello");
     }
 })
 
