@@ -212,9 +212,6 @@ async function getWeatherDetails(){
         let maxTemps = data.daily.temperature_2m_max;
         let minTemps = data.daily.temperature_2m_min;
 
-        console.log(maxTemps);
-        console.log(minTemps);
-
         dayOneMax.innerHTML = `${maxTemps[0]} &deg;`;
         dayTwoMax.innerHTML = `${maxTemps[1]} &deg;`;
         dayThreeMax.innerHTML = `${maxTemps[2]} &deg;`;
@@ -237,8 +234,6 @@ async function getWeatherDetails(){
             let dayName = date.toLocaleDateString("en-US", { weekday: "long" });
             rawDate.push(dayName);
         }
-        
-        console.log(rawDate);
 
         const dailyWeather = data.daily.weather_code;
         let weatherName = [];
@@ -269,31 +264,36 @@ async function getWeatherDetails(){
             weatherName.push(mapWeather(dailyWeather[i]))
         }
 
-        console.log(weatherName);
-
         const dailyWeatherImages = [dayOneWeather, dayTwoWeather, dayThreeWeather, dayFourWeather, dayFiveWeather, daySixWeather, daySevenWeather];
 
         for (let i = 0; i < dailyWeatherImages.length; i++){
             if (weatherName[i] == "sunny"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-sunny.webp";
+                dailyWeatherImages[i].title = "Sunny"
             }
             if (weatherName[i] == "partly-cloudy"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-partly-cloudy.webp";
+                dailyWeatherImages[i].title = "Partly Cloudy"
             }
             if (weatherName[i] == "overcast"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-overcast.webp";
+                dailyWeatherImages[i].title = "Overcast"
             }
             if (weatherName[i] == "fog"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-fog.webp";
+                dailyWeatherImages[i].title = "Fog"
             }
             if (weatherName[i] == "rain"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-rain.webp";
+                dailyWeatherImages[i].title = "Rain"
             }
             if (weatherName[i] == "snow"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-snow.webp";
+                dailyWeatherImages[i].title = "Snow"
             }
             if (weatherName[i] == "storm"){
                 dailyWeatherImages[i].src = "weather-app-main/assets/images/icon-storm.webp";
+                dailyWeatherImages[i].title = "Storm"
             }             
         }
 
